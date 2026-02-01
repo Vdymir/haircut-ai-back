@@ -1,9 +1,8 @@
 import Fastify from "fastify";
+import { healthPlugin } from "./plugins/health.plugin";
 
 export const app = Fastify({
   logger: true,
 });
 
-app.get("/health", async () => {
-  return { status: "ok" };
-});
+app.register(healthPlugin);
